@@ -1,0 +1,29 @@
+/*功能：编写函数long  fun ( char *p)，将一个数字字符串转换为一个整数(不得调用C语言提供的将字符串转换为整数的函数)。
+例如：若输入字符串"-1234"，则函数把它转换为整数值 -1234。*/
+#include <stdio.h>
+#define N 100
+long fun(char *p)
+{
+	int i,s;
+	long k=0;
+    for(i=0;i<N;i++){
+		if(*(p+i)=='\0'){
+			s=i;
+			break;
+		}
+	}
+	for(i=0;i<s;i++){
+		if(*p+i=='-')
+			i++;
+		k=10*k+*(p+i)-48;
+	}
+	if(*p=='-')
+		k=-k;
+	return k;
+}
+int main()
+{
+	char a[N];
+	scanf("%s",a);
+	printf("%d",fun(a));
+}
